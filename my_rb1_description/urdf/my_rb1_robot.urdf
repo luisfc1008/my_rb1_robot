@@ -1,6 +1,29 @@
 <?xml version="1.0" ?>
 
 <robot name="rb1">
+    <gazebo reference="link_chassis">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="front_caster">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="back_caster">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="base_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="front_laser">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    
+    
     <!-- Link - base_link (adjust z value)-->
     <link name="base_link">
 
@@ -58,7 +81,7 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="-0.0185 0 -0.0915" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
                 <cylinder radius="0.035" length="0.04"/>
             </geometry>
