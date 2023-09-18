@@ -12,7 +12,7 @@ class RotRB1 {
 
 public:
   double current_ang;
-  int rate_hz_ = 1;
+  int rate_hz_ = 10;
 
   ros::Rate *rate_;
 
@@ -90,7 +90,7 @@ public:
       while (error > 0.1) {
         // ROS_INFO_STREAM(error);
         vel_msg.linear.x = 0.0;
-        vel_msg.angular.z = -0.05;
+        vel_msg.angular.z = -1.0;
         vel_pub.publish(vel_msg);
         // ROS_INFO("obtaining new error");
         inital_ang = current_ang;
@@ -105,7 +105,7 @@ public:
       while (error < -0.1) {
         // ROS_INFO_STREAM(error);
         vel_msg.linear.x = 0.0;
-        vel_msg.angular.z = 0.05;
+        vel_msg.angular.z = 1.0;
         vel_pub.publish(vel_msg);
         // ROS_INFO("obtaining new error");
         inital_ang = current_ang;
@@ -115,12 +115,12 @@ public:
         rate_->sleep();
       }
     }
-    ROS_INFO("Rotation angle Reached!");
+    // ROS_INFO("Rotation angle Reached!");
     vel_msg.linear.x = 0.0;
     vel_msg.angular.z = 0.0;
     vel_pub.publish(vel_msg);
     rate_->sleep();
-    res.result = true;
+    res.result = "Rotation Successful!";
     return true;
   }
 };
