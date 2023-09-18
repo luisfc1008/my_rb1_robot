@@ -1,0 +1,3 @@
+int32 degrees #Desired degrees of rotation
+---
+bool result #Achieved?
