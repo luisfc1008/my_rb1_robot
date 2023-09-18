@@ -12,7 +12,7 @@ class RotRB1 {
 
 public:
   double current_ang;
-  int rate_hz_ = 10;
+  int rate_hz_ = 20;
 
   ros::Rate *rate_;
 
@@ -62,7 +62,7 @@ public:
     double yaw = std::atan2(siny_cosp, cosy_cosp);
     current_ang = yaw * (180 / M_PI) + 180;
 
-    // ROS_INFO_STREAM(current_ang);
+   //ROS_INFO_STREAM(current_ang);
   }
 
   void rotate_rb1() {
@@ -88,11 +88,11 @@ public:
     if (req.degrees > 0.0) {
       ROS_INFO("Initalizing rotation by %d degrees ...", req.degrees); // left
       while (error > 0.1) {
-        // ROS_INFO_STREAM(error);
+        //ROS_INFO_STREAM(desired_angle);
         vel_msg.linear.x = 0.0;
         vel_msg.angular.z = -1.0;
         vel_pub.publish(vel_msg);
-        // ROS_INFO("obtaining new error");
+        ROS_INFO("da: %f ia: %f e:%f",desired_angle,inital_ang,error);
         inital_ang = current_ang;
         error = desired_angle - inital_ang;
         // ROS_INFO("new error obtained");
@@ -107,7 +107,7 @@ public:
         vel_msg.linear.x = 0.0;
         vel_msg.angular.z = 1.0;
         vel_pub.publish(vel_msg);
-        // ROS_INFO("obtaining new error");
+        ROS_INFO("da: %f ia: %f e:%f",desired_angle,inital_ang,error);
         inital_ang = current_ang;
         error = desired_angle - inital_ang;
         // ROS_INFO("new error obtained");
