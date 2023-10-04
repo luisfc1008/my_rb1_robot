@@ -39,5 +39,6 @@ target_link_libraries(robot_info_node ${catkin_LIBRARIES})
 
 add_executable(agv_robot_info_node
 	src/robot_info_class.cpp
-	src/agv_robot_info_node.cpp)
+	src/agv_robot_info_node.cpp
+	src/hydraulic_system_monitor.cpp)	
 target_link_libraries(agv_robot_info_node ${catkin_LIBRARIES})
